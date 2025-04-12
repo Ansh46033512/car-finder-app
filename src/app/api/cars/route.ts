@@ -5,6 +5,14 @@ import { Car } from '@/types/cars';
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 const API_NINJAS_KEY = process.env.API_NINJAS_KEY;
 
+interface ApiCar {
+  make: string;
+  model: string;
+  year: string;
+  fuel_type: string | null;
+  class: string;
+}
+
 async function fetchUnsplashImage(query: string) {
   const res = await fetch(
     `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=1&client_id=${UNSPLASH_ACCESS_KEY}`
@@ -25,10 +33,10 @@ async function fetchCarFromApiNinjas(make: string, model: string): Promise<Car[]
 
   if (!res.ok) return [];
 
-  const apiData = await res.json();
+  const apiData: ApiCar[] = await res.json(); // Specify ApiCar[] type here
 
   return Promise.all(
-    apiData.map(async (item: any, index: number): Promise<Car> => {
+    apiData.map(async (item: ApiCar, index: number): Promise<Car> => { // Use ApiCar type here
       const image = await fetchUnsplashImage(`${item.make} ${item.model}`);
       return {
         id: 10000 + index, // Ensure no ID conflict
@@ -101,7 +109,7 @@ export async function GET(request: Request) {
   const total = filteredCars.length;
   const totalPages = Math.ceil(total / limit);
   const start = (page - 1) * limit;
-  let paginatedCars = filteredCars.slice(start, start + limit);
+  const paginatedCars = filteredCars.slice(start, start + limit);  // Changed let to const
 
   // Enhance with Unsplash images
   const carsWithImages = await Promise.all(

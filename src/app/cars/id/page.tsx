@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import cars from '@/data/cars.json';
 
 interface Params {
@@ -17,7 +18,14 @@ export default function CarDetailsPage({ params }: Params) {
   return (
     <div className="container mt-5">
       <h1>{car.name}</h1>
-      <img src={car.image} className="img-fluid my-3" alt={car.name} />
+      <Image
+        src={car.image}
+        alt={car.name}
+        width={800}
+        height={500}
+        className="img-fluid my-3 rounded"
+        style={{ objectFit: 'cover' }}
+      />
       <p><strong>Brand:</strong> {car.brand}</p>
       <p><strong>Fuel Type:</strong> {car.fuel}</p>
       <p><strong>Seating Capacity:</strong> {car.seating}</p>

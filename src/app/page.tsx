@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import CarCard from "@/components/CarCard";
 import { Car } from "@/types/cars";
@@ -47,9 +46,12 @@ export default function HomePage() {
         const { data, totalPages } = await res.json();
         setCars(data);
         setTotalPages(totalPages);
-      } catch (err: any) {
-        console.error(err);
-        setError(err.message || "Something went wrong.");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message || "Something went wrong.");
+        } else {
+          setError("An unknown error occurred.");
+        }
         setCars([]);
       } finally {
         setLoading(false);

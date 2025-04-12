@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: [
+      'images.unsplash.com', // ✅ Unsplash
+      'images.carandbike.com',
+      'www.carandbike.com',
+      'media.drivingelectric.com',
+    ],
+  },
 };
 
 export default nextConfig;
