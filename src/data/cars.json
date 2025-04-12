@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "brand": "Toyota",
+      "name": "Corolla",
+      "price": 20000,
+      "fuel": "Petrol",
+      "seating": 5,
+      "image": "https://www.carandbike.com/_next/image?url=https%3A%2F%2Fimages.carandbike.com%2Fcar-images%2Fbig%2Ftoyota%2Fcorolla-altis%2Ftoyota-corolla-altis.jpg%3Fv%3D19&w=3840&q=75",
+      "description": "A reliable sedan."
+    },
+    {
+      "id": 2,
+      "brand": "Tesla",
+      "name": "Model 3",
+      "price": 35000,
+      "fuel": "Electric",
+      "seating": 5,
+      "image": "https://media.drivingelectric.com/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1698686429/drivingelectric/2023-10/Tesla%20Model%203%20facelift%201_awovfc.jpg",
+      "description": "A cutting-edge electric car."
+    }
+  ]
+  
